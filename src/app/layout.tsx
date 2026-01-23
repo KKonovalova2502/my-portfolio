@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from "next-themes";
-import { LangProvider } from "../providers/LangProvider"; // створиш окремо
-
+import { ThemeProvider } from 'next-themes';
+import { LangProvider } from '../providers/LangProvider'; // створиш окремо
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,19 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk"> {/* базова мова, можна буде міняти */}
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="uk">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <LangProvider>
-            <header>
-              {/* Тут можна вставити ThemeToggle і LangToggle */}
-            </header>
+            <Header />
             <main>{children}</main>
-            <footer>© 2026 Ім’я Прізвище</footer>
+            <Footer />
           </LangProvider>
         </ThemeProvider>
       </body>
     </html>
-
   );
 }
